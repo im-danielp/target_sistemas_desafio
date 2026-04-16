@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 
 class ControllerReport {
@@ -19,9 +21,31 @@ class ControllerReport {
     linesCount = textPainter.computeLineMetrics().length;
   }
 
-  void updateEditsCount() {
-    editsCount++;
+  void incrementCharactersCount(String newDescription) {
+    final regExpNumber = RegExp(r'\d');
+    characterNumbersCount += regExpNumber.allMatches(newDescription).length;
+
+    final regExpLetter = RegExp(r'\p{L}', unicode: true);
+    characterLettersCount += regExpLetter.allMatches(newDescription).length;
+
+    totalCharacterCount = characterNumbersCount + characterLettersCount;
+
+    log('$characterNumbersCount | $characterLettersCount | $totalCharacterCount');
   }
 
-  void updateCharactersCount(String newDescription) {}
+  void decrementCharactersCount(String newDescription) {
+    final regExpNumber = RegExp(r'\d');
+    characterNumbersCount -= regExpNumber.allMatches(newDescription).length;
+
+    final regExpLetter = RegExp(r'\p{L}', unicode: true);
+    characterLettersCount -= regExpLetter.allMatches(newDescription).length;
+
+    totalCharacterCount = characterNumbersCount + characterLettersCount;
+
+    log('$characterNumbersCount | $characterLettersCount | $totalCharacterCount');
+  }
+
+  void incrementEditsCount() {
+    editsCount++;
+  }
 }
