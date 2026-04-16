@@ -30,12 +30,12 @@ mixin _$InfoStore on InfoStoreBase, Store {
   );
 
   @override
-  void addInfo(InfoModel info) {
+  void addInfo(String infoDescription) {
     final _$actionInfo = _$InfoStoreBaseActionController.startAction(
       name: 'InfoStoreBase.addInfo',
     );
     try {
-      return super.addInfo(info);
+      return super.addInfo(infoDescription);
     } finally {
       _$InfoStoreBaseActionController.endAction(_$actionInfo);
     }

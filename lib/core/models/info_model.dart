@@ -1,6 +1,6 @@
 class InfoModel {
   final int id;
-  String description;
+  final String description;
 
   InfoModel({required this.id, required this.description});
 

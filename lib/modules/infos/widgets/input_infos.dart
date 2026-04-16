@@ -1,23 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:target/core/locator/locator.dart';
-import 'package:target/core/mobx/info_store.dart';
-import 'package:target/core/models/info_model.dart';
+import 'package:target/modules/infos/controllers/infos_controller.dart';
 
 class InputInfos extends StatelessWidget {
   InputInfos({super.key});
 
-  final controller = TextEditingController();
-  final infoStore = getIt<InfoStore>();
-
-  void mountAndAddInfo() {
-    final info = InfoModel(
-      id: infoStore.nextId,
-      description: controller.text,
-    );
-
-    infoStore.addInfo(info);
-    controller.text = '';
-  }
+  final descriptionController = TextEditingController();
+  final infosController = InfosController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,13 +14,16 @@ class InputInfos extends StatelessWidget {
       children: [
         Expanded(
           child: TextField(
-            controller: controller,
+            controller: descriptionController,
             maxLines: 4,
             minLines: 1,
           ),
         ),
         FilledButton(
-          onPressed: () => mountAndAddInfo(),
+          onPressed: () {
+            infosController.handleAddInfo(descriptionController.text);
+            descriptionController.text = '';
+          },
           child: Icon(Icons.add),
         ),
       ],
