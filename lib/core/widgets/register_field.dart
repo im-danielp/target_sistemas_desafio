@@ -1,24 +1,28 @@
 import 'package:flutter/material.dart';
 
-class LoginField extends StatefulWidget {
+class RegisterField extends StatefulWidget {
   final String label;
   final IconData icon;
   final bool isObscure;
   final TextEditingController controller;
+  final TextCapitalization textCapitalization;
+  final String? Function(String?)? valiador;
 
-  const LoginField({
+  const RegisterField({
     super.key,
     required this.label,
     required this.icon,
     required this.isObscure,
     required this.controller,
+    this.textCapitalization = TextCapitalization.none,
+    this.valiador,
   });
 
   @override
-  State<LoginField> createState() => _LoginFieldState();
+  State<RegisterField> createState() => _RegisterFieldState();
 }
 
-class _LoginFieldState extends State<LoginField> {
+class _RegisterFieldState extends State<RegisterField> {
   late bool isHidding;
 
   @override
@@ -30,21 +34,21 @@ class _LoginFieldState extends State<LoginField> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       spacing: 5,
       children: [
         Row(
           spacing: 8,
           children: [
-            Icon(
-              widget.icon,
-              size: 22,
-            ),
+            Icon(widget.icon, size: 22),
             Text(widget.label),
           ],
         ),
-        TextField(
+        TextFormField(
           controller: widget.controller,
+          textCapitalization: widget.textCapitalization,
           obscureText: widget.isObscure && isHidding,
+          validator: widget.valiador,
           decoration: InputDecoration(
             suffixIcon: Visibility(
               visible: isHidding,

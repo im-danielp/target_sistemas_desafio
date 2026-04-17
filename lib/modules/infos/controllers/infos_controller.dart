@@ -1,4 +1,4 @@
-import 'package:target/core/locator/locator.dart';
+import 'package:target/core/services/locator_service.dart';
 import 'package:target/core/models/info_model.dart';
 import 'package:target/modules/infos/stores/info_store.dart';
 import 'package:target/modules/report/stores/report_store.dart';

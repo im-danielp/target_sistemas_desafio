@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:mobx/mobx.dart';
-import 'package:target/core/locator/locator.dart';
+import 'package:target/core/services/locator_service.dart';
 import 'package:target/core/stores/device_store.dart';
 import 'package:target/modules/infos/controllers/infos_constants.dart';
 import 'package:target/modules/infos/stores/info_store.dart';

@@ -1,9 +1,20 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:target/core/constants/colors_constants.dart';
+import 'package:target/modules/logon/logon_screen.dart';
 
-class LoginLogon extends StatelessWidget {
-  const LoginLogon({super.key});
+class LoginNewAccount extends StatelessWidget {
+  const LoginNewAccount({super.key});
+
+  void goToLogon(BuildContext context) {
+    FocusManager.instance.primaryFocus?.unfocus();
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => LogonScreen(),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +32,7 @@ class LoginLogon extends StatelessWidget {
               fontWeight: FontWeight.bold,
               color: ColorsConstants.primaryColor,
             ),
-            recognizer: TapGestureRecognizer()..onTap = () {},
+            recognizer: TapGestureRecognizer()..onTap = () => goToLogon(context),
           ),
         ],
       ),

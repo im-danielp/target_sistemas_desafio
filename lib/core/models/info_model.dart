@@ -2,10 +2,8 @@ class InfoModel {
   final int id;
   final String description;
 
-  InfoModel({required this.id, required this.description});
-
-  @override
-  String toString() {
-    return 'ID: $id, description: $description';
-  }
+  InfoModel({
+    required this.id,
+    required this.description,
+  });
 }
