@@ -13,11 +13,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int currentIndex = 0;
+  int currentIndex = 1;
 
   final List<Widget> screens = [
-    const InfoScreen(),
     const ReportScreen(),
+    const InfoScreen(),
     const Placeholder(),
   ];
 
@@ -33,17 +33,18 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       bottomNavigationBar: CurvedNavigationBar(
+        index: currentIndex,
         color: StyleConstants.primaryColor,
         backgroundColor: StyleConstants.screenBackgroundColor,
         animationCurve: Curves.easeOutQuint,
         items: [
           Icon(
-            Icons.add,
+            Icons.list,
             size: 30,
             color: StyleConstants.screenBackgroundColor,
           ),
           Icon(
-            Icons.list,
+            Icons.add,
             size: 30,
             color: StyleConstants.screenBackgroundColor,
           ),

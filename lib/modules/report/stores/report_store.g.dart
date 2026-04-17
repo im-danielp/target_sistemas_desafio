@@ -24,9 +24,88 @@ mixin _$ReportStore on ReportStoreBase, Store {
     name: 'ReportStoreBase.lettersCount',
   )).value;
 
+  late final _$linesCountAtom = Atom(
+    name: 'ReportStoreBase.linesCount',
+    context: context,
+  );
+
+  @override
+  int get linesCount {
+    _$linesCountAtom.reportRead();
+    return super.linesCount;
+  }
+
+  @override
+  set linesCount(int value) {
+    _$linesCountAtom.reportWrite(value, super.linesCount, () {
+      super.linesCount = value;
+    });
+  }
+
+  late final _$editsCountAtom = Atom(
+    name: 'ReportStoreBase.editsCount',
+    context: context,
+  );
+
+  @override
+  int get editsCount {
+    _$editsCountAtom.reportRead();
+    return super.editsCount;
+  }
+
+  @override
+  set editsCount(int value) {
+    _$editsCountAtom.reportWrite(value, super.editsCount, () {
+      super.editsCount = value;
+    });
+  }
+
+  late final _$ReportStoreBaseActionController = ActionController(
+    name: 'ReportStoreBase',
+    context: context,
+  );
+
+  @override
+  void incrementEditsCount() {
+    final _$actionInfo = _$ReportStoreBaseActionController.startAction(
+      name: 'ReportStoreBase.incrementEditsCount',
+    );
+    try {
+      return super.incrementEditsCount();
+    } finally {
+      _$ReportStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void incrementLinesCount(String newDescription) {
+    final _$actionInfo = _$ReportStoreBaseActionController.startAction(
+      name: 'ReportStoreBase.incrementLinesCount',
+    );
+    try {
+      return super.incrementLinesCount(newDescription);
+    } finally {
+      _$ReportStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void decrementLinesCount(String oldDescription) {
+    final _$actionInfo = _$ReportStoreBaseActionController.startAction(
+      name: 'ReportStoreBase.decrementLinesCount',
+    );
+    try {
+      return super.decrementLinesCount(oldDescription);
+    } finally {
+      _$ReportStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
+linesCount: ${linesCount},
+editsCount: ${editsCount},
 numbersCount: ${numbersCount},
 lettersCount: ${lettersCount}
     ''';

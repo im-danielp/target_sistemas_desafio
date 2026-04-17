@@ -21,6 +21,8 @@ class InfoDialogEdit extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    descriptionController.text = info.description;
+
     return AlertDialog(
       content: Form(
         key: formKey,

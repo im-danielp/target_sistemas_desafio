@@ -10,7 +10,7 @@ class InfoInput extends StatelessWidget {
 
   void addInfo() {
     if (formKey.currentState!.validate()) {
-      infosController.handleAddInfo(descriptionController.text);
+      infosController.handleAddInfo(descriptionController.text.trim());
       descriptionController.text = '';
     }
   }

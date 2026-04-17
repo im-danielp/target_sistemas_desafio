@@ -1,10 +1,8 @@
-import 'dart:developer';
-
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mobx/mobx.dart';
 import 'package:target/core/services/locator_service.dart';
 import 'package:target/core/stores/device_store.dart';
-import 'package:target/modules/infos/controllers/infos_constants.dart';
 import 'package:target/modules/infos/stores/info_store.dart';
 
 part 'report_store.g.dart';
@@ -19,7 +17,10 @@ abstract class ReportStoreBase with Store {
   static final regExpNumber = RegExp(r'\d');
   static final regExpLetter = RegExp(r'\p{L}', unicode: true);
 
+  @observable
   int linesCount = 0;
+
+  @observable
   int editsCount = 0;
 
   @computed
@@ -40,35 +41,48 @@ abstract class ReportStoreBase with Store {
     return count;
   }
 
-  void incrementLinesCount(String newDescription) {
-    final textPainter = TextPainter(
-      text: TextSpan(text: newDescription, style: TextStyle(fontSize: 16)),
-      textDirection: TextDirection.ltr,
-      maxLines: null,
-    )..layout(maxWidth: maxWidth);
-
-    linesCount += textPainter.computeLineMetrics().length;
+  double get lettersPercentage {
+    int totalCharacters = lettersCount + numbersCount;
+    return (lettersCount * 100) / totalCharacters;
   }
 
-  void decrementLinesCount(String oldDescription) {
-    final textPainter = TextPainter(
-      text: TextSpan(text: oldDescription, style: InfosConstants.textStyle),
-      textDirection: TextDirection.ltr,
-      maxLines: null,
-    )..layout(maxWidth: maxWidth);
-
-    linesCount -= textPainter.computeLineMetrics().length;
+  double get numbersPercentage {
+    int totalCharacters = lettersCount + numbersCount;
+    return (numbersCount * 100) / totalCharacters;
   }
 
+  @action
   void incrementEditsCount() {
     editsCount++;
   }
 
-  void teste() {
-    log('linesCount: $linesCount');
-    log('editsCount: $editsCount');
-    log('numbersCount: $numbersCount');
-    log('lettersCount: $lettersCount');
-    log('totalCharacters: ${numbersCount + lettersCount}\n\n');
+  @action
+  void incrementLinesCount(String newDescription) {
+    final textPainter = TextPainter(
+      text: TextSpan(
+        text: newDescription,
+        style: GoogleFonts.dmSans(fontSize: 16, color: Colors.black),
+      ),
+      textDirection: TextDirection.ltr,
+      maxLines: null,
+    )..layout(maxWidth: maxWidth - 155);
+
+    final metrics = textPainter.computeLineMetrics();
+    linesCount += metrics.length;
+  }
+
+  @action
+  void decrementLinesCount(String oldDescription) {
+    final textPainter = TextPainter(
+      text: TextSpan(
+        text: oldDescription,
+        style: GoogleFonts.dmSans(fontSize: 16, color: Colors.black),
+      ),
+      textDirection: TextDirection.ltr,
+      maxLines: null,
+    )..layout(maxWidth: maxWidth - 155);
+
+    final metrics = textPainter.computeLineMetrics();
+    linesCount -= metrics.length;
   }
 }
