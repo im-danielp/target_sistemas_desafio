@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:target/core/constants/colors_constants.dart';
+import 'package:target/core/constants/style_constants.dart';
 import 'package:target/modules/logon/logon_screen.dart';
 
 class LoginNewAccount extends StatelessWidget {
@@ -30,7 +30,7 @@ class LoginNewAccount extends StatelessWidget {
             text: ' Cadastre-se',
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              color: ColorsConstants.primaryColor,
+              color: StyleConstants.primaryColor,
             ),
             recognizer: TapGestureRecognizer()..onTap = () => goToLogon(context),
           ),

@@ -42,7 +42,7 @@ abstract class ReportStoreBase with Store {
 
   void incrementLinesCount(String newDescription) {
     final textPainter = TextPainter(
-      text: TextSpan(text: newDescription, style: InfosConstants.textStyle),
+      text: TextSpan(text: newDescription, style: TextStyle(fontSize: 16)),
       textDirection: TextDirection.ltr,
       maxLines: null,
     )..layout(maxWidth: maxWidth);

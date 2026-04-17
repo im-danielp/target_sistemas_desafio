@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:target/core/constants/assets_constants.dart';
-import 'package:target/core/constants/colors_constants.dart';
+import 'package:target/core/constants/style_constants.dart';
 import 'package:target/core/widgets/register_field.dart';
 import 'package:target/modules/logon/controllers/logon_controller.dart';
 
@@ -13,8 +13,8 @@ class LogonScreen extends StatefulWidget {
 }
 
 class _LogonScreenState extends State<LogonScreen> {
-  final logonController = LogonController();
   final formKey = GlobalKey<FormState>();
+  final logonController = LogonController();
 
   final nameController = TextEditingController();
   final userController = TextEditingController();
@@ -48,7 +48,7 @@ class _LogonScreenState extends State<LogonScreen> {
       appBar: AppBar(
         title: Text('Novo usuário', style: TextStyle(fontWeight: FontWeight.bold)),
         centerTitle: true,
-        backgroundColor: ColorsConstants.screenBackgroundColor,
+        backgroundColor: StyleConstants.screenBackgroundColor,
         surfaceTintColor: Colors.transparent,
       ),
       body: SingleChildScrollView(

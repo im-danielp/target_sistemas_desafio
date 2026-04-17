@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:target/core/constants/colors_constants.dart';
+import 'package:target/core/constants/style_constants.dart';
 
 abstract class ThemeService {
   static final theme = ThemeData(
-    colorSchemeSeed: ColorsConstants.primaryColor,
-    scaffoldBackgroundColor: ColorsConstants.screenBackgroundColor,
-    dialogTheme: DialogThemeData(backgroundColor: ColorsConstants.screenBackgroundColor),
+    colorSchemeSeed: StyleConstants.primaryColor,
+    scaffoldBackgroundColor: StyleConstants.screenBackgroundColor,
+    dialogTheme: DialogThemeData(backgroundColor: StyleConstants.screenBackgroundColor),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
-      fillColor: ColorsConstants.fieldsBackgroundColor,
+      fillColor: StyleConstants.fieldsBackgroundColor,
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(5),
-        borderSide: BorderSide(color: ColorsConstants.fieldsBorderColor),
+        borderSide: BorderSide(color: StyleConstants.outlineBorderColor),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(5),
-        borderSide: BorderSide(color: ColorsConstants.fieldsBorderColor),
+        borderSide: BorderSide(color: StyleConstants.outlineBorderColor),
       ),
     ),
   );

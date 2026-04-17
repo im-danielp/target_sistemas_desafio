@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:target/core/constants/colors_constants.dart';
+import 'package:target/core/constants/style_constants.dart';
 import 'package:target/core/constants/keys_constants.dart';
 import 'package:target/core/services/locator_service.dart';
 import 'package:target/core/stores/device_store.dart';
@@ -21,34 +21,44 @@ class DesafioTarget extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       scaffoldMessengerKey: KeysConstants.snackbarKey,
       theme: ThemeData(
-        colorSchemeSeed: ColorsConstants.primaryColor,
+        colorSchemeSeed: StyleConstants.primaryColor,
         textTheme: GoogleFonts.dmSansTextTheme(ThemeData.light().textTheme).apply(
           bodyColor: Colors.black,
           displayColor: Colors.black,
         ),
-        scaffoldBackgroundColor: ColorsConstants.screenBackgroundColor,
-        dialogTheme: DialogThemeData(backgroundColor: ColorsConstants.screenBackgroundColor),
-        appBarTheme: AppBarTheme(backgroundColor: ColorsConstants.screenBackgroundColor),
+        scaffoldBackgroundColor: StyleConstants.screenBackgroundColor,
+        dialogTheme: DialogThemeData(
+          backgroundColor: StyleConstants.screenBackgroundColor,
+          shape: RoundedRectangleBorder(
+            side: BorderSide(color: StyleConstants.primaryColor),
+            borderRadius: BorderRadiusGeometry.circular(10),
+          ),
+        ),
+        appBarTheme: AppBarTheme(
+          backgroundColor: StyleConstants.screenBackgroundColor,
+          surfaceTintColor: StyleConstants.screenBackgroundColor,
+        ),
         filledButtonTheme: FilledButtonThemeData(
           style: FilledButton.styleFrom(
-            backgroundColor: ColorsConstants.primaryColor,
+            backgroundColor: StyleConstants.primaryColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadiusGeometry.circular(8),
-              side: BorderSide(color: ColorsConstants.buttonBorderColor),
+              side: BorderSide(color: StyleConstants.outlineBorderColor),
             ),
           ),
         ),
         inputDecorationTheme: InputDecorationTheme(
           filled: true,
-          fillColor: ColorsConstants.fieldsBackgroundColor,
+          fillColor: StyleConstants.fieldsBackgroundColor,
           contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          hintStyle: TextStyle(color: const Color.fromARGB(88, 0, 0, 0)),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5),
-            borderSide: BorderSide(color: ColorsConstants.fieldsBorderColor),
+            borderSide: BorderSide(color: StyleConstants.outlineBorderColor),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5),
-            borderSide: BorderSide(color: ColorsConstants.fieldsBorderColor),
+            borderSide: BorderSide(color: StyleConstants.outlineBorderColor),
           ),
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5),

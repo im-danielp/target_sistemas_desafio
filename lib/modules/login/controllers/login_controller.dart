@@ -17,6 +17,7 @@ class LoginController {
           builder: (context) => HomeScreen(),
         ),
       );
+      userCollection.setLoggedUser(user);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         CustomSnackbars.error(message: 'Usuário não cadastrado'),

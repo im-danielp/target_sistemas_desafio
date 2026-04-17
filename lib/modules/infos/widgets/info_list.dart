@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:target/modules/infos/controllers/infos_constants.dart';
+import 'package:target/core/constants/style_constants.dart';
+import 'package:target/core/models/info_model.dart';
 import 'package:target/modules/infos/controllers/infos_controller.dart';
+import 'package:target/modules/infos/widgets/info_button_action.dart';
 import 'package:target/modules/infos/widgets/info_dialog_edit.dart';
 
 class InfoList extends StatelessWidget {
@@ -9,35 +11,52 @@ class InfoList extends StatelessWidget {
 
   final infosController = InfosController();
 
+  void openEditInfo(BuildContext context, InfoModel info) {
+    FocusManager.instance.primaryFocus?.unfocus();
+    showDialog(
+      context: context,
+      builder: (context) => InfoDialogEdit(info: info),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Observer(
-        builder: (_) => ListView.builder(
-          itemCount: infosController.infos.length,
-          itemBuilder: (context, index) {
-            final info = infosController.infos[index];
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(color: StyleConstants.outlineBorderColor),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Observer(
+          builder: (_) => ListView.separated(
+            itemCount: infosController.infos.length,
+            separatorBuilder: (context, index) => Divider(
+              color: StyleConstants.outlineBorderColor,
+              height: 8,
+            ),
+            itemBuilder: (context, index) {
+              final info = infosController.infos[index];
 
-            return ListTile(
-              title: Text(info.description, style: InfosConstants.textStyle),
-              trailing: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  IconButton(
-                    onPressed: () => showDialog(
-                      context: context,
-                      builder: (context) => InfoDialogEdit(info: info),
+              return ListTile(
+                title: Text(info.description),
+                contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                trailing: Row(
+                  spacing: 10,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    InfoButtonAction(
+                      icon: Icons.mode_edit_outlined,
+                      onTap: () => openEditInfo(context, info),
                     ),
-                    icon: Icon(Icons.mode_edit_outlined),
-                  ),
-                  IconButton(
-                    onPressed: () => infosController.handleRemoveInfo(info),
-                    icon: Icon(Icons.cancel_outlined),
-                  ),
-                ],
-              ),
-            );
-          },
+                    InfoButtonAction(
+                      icon: Icons.cancel_outlined,
+                      onTap: () => infosController.handleRemoveInfo(info),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
         ),
       ),
     );

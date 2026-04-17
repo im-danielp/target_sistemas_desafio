@@ -6,6 +6,8 @@ class UserCollection {
     UserModel(name: 'Admin', user: 'admin', password: '123'),
   ];
 
+  UserModel? loggedUser;
+
   bool isUserRegistered(String user) {
     final userRegistered = users.where((e) => e.user == user);
     return userRegistered.isNotEmpty;
@@ -13,5 +15,9 @@ class UserCollection {
 
   void addUser(UserModel user) {
     users.add(user);
+  }
+
+  void setLoggedUser(String user) {
+    loggedUser = users.where((e) => e.user == user).first;
   }
 }
