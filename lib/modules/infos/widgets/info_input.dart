@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:target/modules/infos/controllers/infos_controller.dart';
 
-class InputInfos extends StatelessWidget {
-  InputInfos({super.key});
+class InfoInput extends StatelessWidget {
+  InfoInput({super.key});
 
   final descriptionController = TextEditingController();
   final infosController = InfosController();

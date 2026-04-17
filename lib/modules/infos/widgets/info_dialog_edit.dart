@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:target/modules/infos/controllers/infos_controller.dart';
 import 'package:target/core/models/info_model.dart';
 
-class DialogEditInfos extends StatelessWidget {
+class InfoDialogEdit extends StatelessWidget {
   final InfoModel info;
 
-  DialogEditInfos({super.key, required this.info});
+  InfoDialogEdit({super.key, required this.info});
 
   final descriptionController = TextEditingController();
   final infosController = InfosController();

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:target/modules/infos/widgets/input_infos.dart';
-import 'package:target/modules/infos/widgets/list_infos.dart';
+import 'package:target/modules/infos/widgets/info_input.dart';
+import 'package:target/modules/infos/widgets/info_list.dart';
 
 class InfosScreen extends StatelessWidget {
   const InfosScreen({super.key});
@@ -10,8 +10,8 @@ class InfosScreen extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          ListInfos(),
-          InputInfos(),
+          InfoList(),
+          InfoInput(),
         ],
       ),
     );

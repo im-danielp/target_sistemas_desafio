@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:target/modules/infos/controllers/infos_constants.dart';
 import 'package:target/modules/infos/controllers/infos_controller.dart';
-import 'package:target/modules/infos/widgets/dialog_edit_infos.dart';
+import 'package:target/modules/infos/widgets/info_dialog_edit.dart';
 
-class ListInfos extends StatelessWidget {
-  ListInfos({super.key});
+class InfoList extends StatelessWidget {
+  InfoList({super.key});
 
   final infosController = InfosController();
 
@@ -26,7 +26,7 @@ class ListInfos extends StatelessWidget {
                   IconButton(
                     onPressed: () => showDialog(
                       context: context,
-                      builder: (context) => DialogEditInfos(info: info),
+                      builder: (context) => InfoDialogEdit(info: info),
                     ),
                     icon: Icon(Icons.mode_edit_outlined),
                   ),

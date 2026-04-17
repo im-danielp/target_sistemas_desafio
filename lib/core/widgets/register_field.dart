@@ -47,8 +47,14 @@ class _RegisterFieldState extends State<RegisterField> {
         TextFormField(
           controller: widget.controller,
           textCapitalization: widget.textCapitalization,
+          autovalidateMode: AutovalidateMode.onUnfocus,
           obscureText: widget.isObscure && isHidding,
-          validator: widget.valiador,
+          validator:
+              widget.valiador ??
+              (value) {
+                if (value == null || value.isEmpty) return 'Preencha este campo';
+                return null;
+              },
           decoration: InputDecoration(
             suffixIcon: Visibility(
               visible: isHidding,

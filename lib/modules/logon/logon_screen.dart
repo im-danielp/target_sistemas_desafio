@@ -17,15 +17,27 @@ class _LogonScreenState extends State<LogonScreen> {
   final formKey = GlobalKey<FormState>();
 
   final nameController = TextEditingController();
-  final loginController = TextEditingController();
+  final userController = TextEditingController();
   final passController = TextEditingController();
   final pass2Controller = TextEditingController();
+
+  void handleAddUser() {
+    if (formKey.currentState!.validate()) {
+      FocusManager.instance.primaryFocus?.unfocus();
+      logonController.addUser(
+        context,
+        nameController.text,
+        userController.text,
+        passController.text,
+      );
+    }
+  }
 
   @override
   void dispose() {
     super.dispose();
     nameController.dispose();
-    loginController.dispose();
+    userController.dispose();
     passController.dispose();
     pass2Controller.dispose();
   }
@@ -55,16 +67,16 @@ class _LogonScreenState extends State<LogonScreen> {
               ),
               RegisterField(
                 label: 'Nome',
-                icon: Icons.account_circle_outlined,
+                icon: Icons.badge_outlined,
                 isObscure: false,
                 controller: nameController,
                 textCapitalization: TextCapitalization.words,
               ),
               RegisterField(
                 label: 'Usuário',
-                icon: Icons.badge_outlined,
+                icon: Icons.account_circle_outlined,
                 isObscure: false,
-                controller: loginController,
+                controller: userController,
               ),
               RegisterField(
                 label: 'Senha',
@@ -78,6 +90,7 @@ class _LogonScreenState extends State<LogonScreen> {
                 isObscure: true,
                 controller: pass2Controller,
                 valiador: (value) {
+                  if (value!.isEmpty) return 'Confirme sua senha';
                   if (passController.text != pass2Controller.text) return 'Senhas diferentes';
                   return null;
                 },
@@ -86,16 +99,7 @@ class _LogonScreenState extends State<LogonScreen> {
               SizedBox(
                 height: 50,
                 child: FilledButton(
-                  onPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      logonController.createAndAddUser(
-                        context,
-                        nameController.text,
-                        loginController.text,
-                        passController.text,
-                      );
-                    }
-                  },
+                  onPressed: () => handleAddUser(),
                   child: Text('Cadastrar', style: TextStyle(fontWeight: FontWeight.bold)),
                 ),
               ),

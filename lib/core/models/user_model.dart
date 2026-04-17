@@ -1,16 +1,16 @@
 class UserModel {
   final String name;
-  final String login;
+  final String user;
   final String password;
 
   UserModel({
     required this.name,
-    required this.login,
+    required this.user,
     required this.password,
   });
 
   @override
   String toString() {
-    return 'name: $name, login: $login, password: $password';
+    return 'name $name, user $user, password $password';
   }
 }

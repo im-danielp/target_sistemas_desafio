@@ -1,38 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:target/core/collections/user_collection.dart';
 import 'package:target/core/models/user_model.dart';
+import 'package:target/core/services/locator_service.dart';
+import 'package:target/core/widgets/custom_snackbar.dart';
 
 class LogonController {
-  static final userCollection = UserCollection();
+  static final userCollection = getIt<UserCollection>();
 
-  void createAndAddUser(
+  void addUser(
     BuildContext context,
     String name,
-    String login,
+    String user,
     String password,
   ) {
-    final user = UserModel(
+    final newUser = UserModel(
       name: name,
-      login: login,
+      user: user,
       password: password,
     );
-    userCollection.addUser(user);
 
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(
-      SnackBar(
-        content: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text('Usuário criado com sucesso!', style: TextStyle(fontWeight: FontWeight.bold)),
-            Icon(Icons.check_circle, color: Colors.white),
-          ],
-        ),
-        backgroundColor: Colors.green,
-      ),
-    );
-
-    Navigator.pop(context);
+    if (userCollection.isUserRegistered(newUser.user)) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        CustomSnackbars.error(message: 'Usuário já cadastrado!'),
+      );
+    } else {
+      userCollection.addUser(newUser);
+      ScaffoldMessenger.of(context).showSnackBar(
+        CustomSnackbars.success(message: 'Usuário criado com sucesso'),
+      );
+      Navigator.pop(context);
+    }
   }
 }
