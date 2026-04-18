@@ -38,8 +38,7 @@ class ProfileCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Daniel Pacheco Ferreira',
-                      // profileController.userName,
+                      profileController.userName,
                       maxLines: 1,
                       style: TextStyle(
                         fontSize: 18,
