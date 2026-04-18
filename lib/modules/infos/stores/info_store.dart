@@ -9,6 +9,7 @@ abstract class InfoStoreBase with Store {
   @observable
   List<InfoModel> infos = ObservableList<InfoModel>();
 
+  int get infoCount => infos.length;
   int nextId = 1;
 
   @action
@@ -30,7 +31,8 @@ abstract class InfoStoreBase with Store {
     infos[index] = newInfo;
   }
 
-  int getInfoCount() {
-    return infos.length;
+  @action
+  void clearInfos() {
+    infos.clear();
   }
 }

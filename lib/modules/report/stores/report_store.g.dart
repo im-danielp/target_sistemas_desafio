@@ -102,6 +102,18 @@ mixin _$ReportStore on ReportStoreBase, Store {
   }
 
   @override
+  void resetLinesCount() {
+    final _$actionInfo = _$ReportStoreBaseActionController.startAction(
+      name: 'ReportStoreBase.resetLinesCount',
+    );
+    try {
+      return super.resetLinesCount();
+    } finally {
+      _$ReportStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 linesCount: ${linesCount},

@@ -66,6 +66,18 @@ mixin _$InfoStore on InfoStoreBase, Store {
   }
 
   @override
+  void clearInfos() {
+    final _$actionInfo = _$InfoStoreBaseActionController.startAction(
+      name: 'InfoStoreBase.clearInfos',
+    );
+    try {
+      return super.clearInfos();
+    } finally {
+      _$InfoStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 infos: ${infos}

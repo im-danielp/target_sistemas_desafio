@@ -85,4 +85,15 @@ abstract class ReportStoreBase with Store {
     final metrics = textPainter.computeLineMetrics();
     linesCount -= metrics.length;
   }
+
+  /// Ao realizar logout.
+  @action
+  void resetLinesCount() {
+    linesCount = 0;
+  }
+
+  @action
+  void resetEditsCount() {
+    editsCount = 0;
+  }
 }

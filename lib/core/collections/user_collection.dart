@@ -26,11 +26,11 @@ class UserCollection {
     loggedUser = users.where((e) => e.login == login).first;
   }
 
-  void changeUserPassword(String newPassword) {
-    final index = users.indexWhere((e) => e.login == loggedUser!.login);
-    users[index].password = newPassword;
+  void deleteAccount() {
+    users.remove(loggedUser);
+  }
 
-    // final newInfo = UserModel(name: user.name, login: user.login, password: newPassword);
-    // infos[index] = newInfo;
+  void logout() {
+    loggedUser = null;
   }
 }
