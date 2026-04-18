@@ -5,8 +5,8 @@ import 'package:target/modules/report/stores/report_store.dart';
 
 /// Usada para manejar o store das infos e atualizar os dados do relatório.
 class InfosController {
-  static final infoStore = getIt<InfoStore>();
-  static final reportStore = getIt<ReportStore>();
+  final infoStore = getIt<InfoStore>();
+  final reportStore = getIt<ReportStore>();
 
   List<InfoModel> get infos => infoStore.infos;
 

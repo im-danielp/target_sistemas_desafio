@@ -28,34 +28,47 @@ class InfoList extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         child: Observer(
-          builder: (_) => ListView.separated(
-            itemCount: infosController.infos.length,
-            separatorBuilder: (context, index) => Divider(
-              color: StyleConstants.outlineBorderColor,
-              height: 8,
-            ),
-            itemBuilder: (context, index) {
-              final info = infosController.infos[index];
-
-              return ListTile(
-                title: Text(info.description),
-                contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                trailing: Row(
-                  spacing: 10,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    InfoButtonAction(
-                      icon: Icons.mode_edit_outlined,
-                      onTap: () => openEditInfo(context, info),
-                    ),
-                    InfoButtonAction(
-                      icon: Icons.cancel_outlined,
-                      onTap: () => infosController.handleRemoveInfo(info),
-                    ),
-                  ],
+          builder: (_) => Visibility(
+            replacement: Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Text(
+                  'Digite algo e pressione o botão "+" para inserir um novo registro.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: StyleConstants.textLowOpacityColor),
                 ),
-              );
-            },
+              ),
+            ),
+            visible: infosController.infos.isNotEmpty,
+            child: ListView.separated(
+              itemCount: infosController.infos.length,
+              separatorBuilder: (context, index) => Divider(
+                color: StyleConstants.outlineBorderColor,
+                height: 8,
+              ),
+              itemBuilder: (context, index) {
+                final info = infosController.infos[index];
+
+                return ListTile(
+                  title: Text(info.description),
+                  contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                  trailing: Row(
+                    spacing: 10,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      InfoButtonAction(
+                        icon: Icons.mode_edit_outlined,
+                        onTap: () => openEditInfo(context, info),
+                      ),
+                      InfoButtonAction(
+                        icon: Icons.cancel_outlined,
+                        onTap: () => infosController.handleRemoveInfo(info),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
           ),
         ),
       ),

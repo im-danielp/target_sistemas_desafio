@@ -10,12 +10,12 @@ part 'report_store.g.dart';
 class ReportStore = ReportStoreBase with _$ReportStore;
 
 abstract class ReportStoreBase with Store {
-  static final infoStore = getIt<InfoStore>();
   static final deviceStore = getIt<DeviceStore>();
+  final infoStore = getIt<InfoStore>();
 
-  static final maxWidth = deviceStore.screenWidth;
-  static final regExpNumber = RegExp(r'\d');
-  static final regExpLetter = RegExp(r'\p{L}', unicode: true);
+  final maxWidth = deviceStore.screenWidth;
+  final regExpNumber = RegExp(r'\d');
+  final regExpLetter = RegExp(r'\p{L}', unicode: true);
 
   @observable
   int linesCount = 0;

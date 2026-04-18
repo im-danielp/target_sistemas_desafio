@@ -5,13 +5,13 @@ import 'package:target/core/constants/style_constants.dart';
 import 'package:target/core/services/locator_service.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
-  HomeAppBar({super.key});
-
-  static final userCollection = getIt<UserCollection>();
-  final userFirstName = userCollection.loggedUser!.name.split(' ').first;
+  const HomeAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final userCollection = getIt<UserCollection>();
+    final userFirstName = userCollection.loggedUser!.name.split(' ').first;
+
     return AppBar(
       flexibleSpace: SafeArea(
         child: Padding(

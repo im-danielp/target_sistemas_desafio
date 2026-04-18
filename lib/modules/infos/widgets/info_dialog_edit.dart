@@ -14,7 +14,7 @@ class InfoDialogEdit extends StatelessWidget {
 
   void editInfo(BuildContext context) {
     if (formKey.currentState!.validate()) {
-      infosController.handleEditInfo(info, descriptionController.text);
+      infosController.handleEditInfo(info, descriptionController.text.trim());
       Navigator.pop(context);
     }
   }

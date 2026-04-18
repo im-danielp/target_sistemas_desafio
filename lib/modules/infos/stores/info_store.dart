@@ -29,4 +29,8 @@ abstract class InfoStoreBase with Store {
     final newInfo = InfoModel(id: id, description: newDescription);
     infos[index] = newInfo;
   }
+
+  int getInfoCount() {
+    return infos.length;
+  }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:target/core/constants/style_constants.dart';
 import 'package:target/modules/home/widgets/home_app_bar.dart';
 import 'package:target/modules/infos/info_screen.dart';
+import 'package:target/modules/profile/profile_screen.dart';
 import 'package:target/modules/report/report_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,9 +17,9 @@ class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 1;
 
   final List<Widget> screens = [
-    const ReportScreen(),
+    ReportScreen(),
     const InfoScreen(),
-    const Placeholder(),
+    const ProfileScreen(),
   ];
 
   @override
@@ -36,10 +37,11 @@ class _HomeScreenState extends State<HomeScreen> {
         index: currentIndex,
         color: StyleConstants.primaryColor,
         backgroundColor: StyleConstants.screenBackgroundColor,
+        buttonBackgroundColor: StyleConstants.darkPrimaryColor,
         animationCurve: Curves.easeOutQuint,
         items: [
           Icon(
-            Icons.list,
+            Icons.area_chart_outlined,
             size: 30,
             color: StyleConstants.screenBackgroundColor,
           ),

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 abstract class StyleConstants {
   static final primaryColor = Color(0XFFF93B00);
+  static final darkPrimaryColor = Color(0XFFDD0000);
   static final secondaryColor = Color(0XFF9E20FF);
   static final tertiaryColor = Color(0XFF0089F9);
   static final quartaryColor = Color(0XFF2ADF5A);

@@ -10,16 +10,16 @@ class LogonController {
   void addUser(
     BuildContext context,
     String name,
-    String user,
+    String login,
     String password,
   ) {
     final newUser = UserModel(
-      name: name,
-      user: user,
-      password: password,
+      name: name.trim(),
+      login: login.trim(),
+      password: password.trim(),
     );
 
-    if (userCollection.isUserRegistered(newUser.user)) {
+    if (userCollection.isUserRegistered(newUser.login)) {
       ScaffoldMessenger.of(context).showSnackBar(
         CustomSnackbars.error(message: 'Usuário já cadastrado!'),
       );

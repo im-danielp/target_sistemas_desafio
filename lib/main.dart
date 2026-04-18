@@ -23,8 +23,8 @@ class DesafioTarget extends StatelessWidget {
       theme: ThemeData(
         colorSchemeSeed: StyleConstants.primaryColor,
         textTheme: GoogleFonts.dmSansTextTheme(ThemeData.light().textTheme).apply(
-          bodyColor: Colors.black,
-          displayColor: Colors.black,
+          bodyColor: StyleConstants.textColor,
+          displayColor: StyleConstants.textColor,
         ),
         scaffoldBackgroundColor: StyleConstants.screenBackgroundColor,
         dialogTheme: DialogThemeData(

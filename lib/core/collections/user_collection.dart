@@ -3,13 +3,13 @@ import 'package:target/core/models/user_model.dart';
 /// Usuários cadastrados para acessar o aplicativo.
 class UserCollection {
   List<UserModel> users = [
-    UserModel(name: 'Admin', user: 'admin', password: '123'),
+    UserModel(name: 'Admin', login: 'admin', password: 'admin'),
   ];
 
   UserModel? loggedUser;
 
-  bool isUserRegistered(String user) {
-    final userRegistered = users.where((e) => e.user == user);
+  bool isUserRegistered(String login) {
+    final userRegistered = users.where((e) => e.login == login);
     return userRegistered.isNotEmpty;
   }
 
@@ -17,7 +17,20 @@ class UserCollection {
     users.add(user);
   }
 
-  void setLoggedUser(String user) {
-    loggedUser = users.where((e) => e.user == user).first;
+  bool confirmUserData(String login, String password) {
+    final userRegistered = users.where((e) => e.login == login && e.password == password);
+    return userRegistered.isNotEmpty;
+  }
+
+  void setLoggedUser(String login) {
+    loggedUser = users.where((e) => e.login == login).first;
+  }
+
+  void changeUserPassword(String newPassword) {
+    final index = users.indexWhere((e) => e.login == loggedUser!.login);
+    users[index].password = newPassword;
+
+    // final newInfo = UserModel(name: user.name, login: user.login, password: newPassword);
+    // infos[index] = newInfo;
   }
 }

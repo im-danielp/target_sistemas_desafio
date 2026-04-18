@@ -3,7 +3,7 @@ import 'package:target/core/constants/style_constants.dart';
 
 class ReportLine extends StatelessWidget {
   final String title;
-  final String count;
+  final Widget count;
 
   const ReportLine({
     super.key,
@@ -23,7 +23,7 @@ class ReportLine extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(title),
-          Text(count),
+          count,
         ],
       ),
     );

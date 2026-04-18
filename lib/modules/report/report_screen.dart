@@ -7,37 +7,41 @@ import 'package:target/modules/report/widgets/report_line.dart';
 import 'package:target/modules/report/widgets/report_no_data.dart';
 
 class ReportScreen extends StatelessWidget {
-  const ReportScreen({super.key});
+  ReportScreen({super.key});
 
-  static final reportStore = getIt<ReportStore>();
+  final reportStore = getIt<ReportStore>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Observer(
-        builder: (_) => Column(
-          spacing: 20,
-          children: [
-            Text('Relatório', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            ReportLine(
-              title: 'Quantidade de linhas',
-              count: reportStore.linesCount.toString(),
+      body: Column(
+        spacing: 20,
+        children: [
+          Text('Relatório', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          ReportLine(
+            title: 'Quantidade de linhas',
+            count: Observer(builder: (context) => Text(reportStore.linesCount.toString())),
+          ),
+          ReportLine(
+            title: 'Quantidade de edições',
+            count: Observer(builder: (context) => Text(reportStore.editsCount.toString())),
+          ),
+          ReportLine(
+            title: 'Quantidade de caracteres',
+            count: Observer(
+              builder: (context) => Text('${reportStore.numbersCount + reportStore.lettersCount}'),
             ),
-            ReportLine(
-              title: 'Quantidade de edições',
-              count: reportStore.editsCount.toString(),
-            ),
-            ReportLine(
-              title: 'Quantidade de caracteres',
-              count: '${reportStore.numbersCount + reportStore.lettersCount}',
-            ),
-            Visibility(
-              visible: reportStore.linesCount > 0,
-              replacement: ReportNoData(),
-              child: ReportChart(reportStore: reportStore),
-            ),
-          ],
-        ),
+          ),
+          Observer(
+            builder: (_) {
+              return Visibility(
+                visible: reportStore.linesCount > 0,
+                replacement: ReportNoData(),
+                child: ReportChart(reportStore: reportStore),
+              );
+            },
+          ),
+        ],
       ),
     );
   }
