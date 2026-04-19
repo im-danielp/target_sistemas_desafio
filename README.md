@@ -17,3 +17,6 @@ Senha: admin
 Utilizado MobX para gerenciamento de estado.<br>
 A pasta ```core``` é utilizada para armazenar arquivos e lógicas usadas em várias partes do sistema, como models, constants, stores, collections, services e widgets.<br>
 A pasta ```modules``` é utilziada para armazenar arquivos específicos para a lógca de cada tela, podendo haver as subpastas controllers, stores, widgets e collections.
+
+## Autor
+Daniel Pacheco Ferreira<br>
