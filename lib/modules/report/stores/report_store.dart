@@ -61,11 +61,11 @@ abstract class ReportStoreBase with Store {
     final textPainter = TextPainter(
       text: TextSpan(
         text: newDescription,
-        style: GoogleFonts.dmSans(fontSize: 16, color: Colors.black),
+        style: GoogleFonts.dmSans(fontSize: 14, color: Colors.black),
       ),
       textDirection: TextDirection.ltr,
       maxLines: null,
-    )..layout(maxWidth: maxWidth - 155);
+    )..layout(maxWidth: maxWidth - 185);
 
     final metrics = textPainter.computeLineMetrics();
     linesCount += metrics.length;
@@ -76,11 +76,11 @@ abstract class ReportStoreBase with Store {
     final textPainter = TextPainter(
       text: TextSpan(
         text: oldDescription,
-        style: GoogleFonts.dmSans(fontSize: 16, color: Colors.black),
+        style: GoogleFonts.dmSans(fontSize: 14, color: Colors.black),
       ),
       textDirection: TextDirection.ltr,
       maxLines: null,
-    )..layout(maxWidth: maxWidth - 155);
+    )..layout(maxWidth: maxWidth - 185);
 
     final metrics = textPainter.computeLineMetrics();
     linesCount -= metrics.length;
