@@ -17,7 +17,6 @@ class ReportScreen extends StatelessWidget {
       body: Column(
         spacing: 20,
         children: [
-          Text('Relatório', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
           ReportLine(
             title: 'Quantidade de linhas',
             count: Observer(builder: (context) => Text(reportStore.linesCount.toString())),

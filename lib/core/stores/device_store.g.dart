@@ -27,18 +27,36 @@ mixin _$DeviceStore on DeviceStoreBase, Store {
     });
   }
 
+  late final _$screenHeightAtom = Atom(
+    name: 'DeviceStoreBase.screenHeight',
+    context: context,
+  );
+
+  @override
+  double get screenHeight {
+    _$screenHeightAtom.reportRead();
+    return super.screenHeight;
+  }
+
+  @override
+  set screenHeight(double value) {
+    _$screenHeightAtom.reportWrite(value, super.screenHeight, () {
+      super.screenHeight = value;
+    });
+  }
+
   late final _$DeviceStoreBaseActionController = ActionController(
     name: 'DeviceStoreBase',
     context: context,
   );
 
   @override
-  void updateScreenWidth(double width) {
+  void updateScreenSize(double width, double height) {
     final _$actionInfo = _$DeviceStoreBaseActionController.startAction(
-      name: 'DeviceStoreBase.updateScreenWidth',
+      name: 'DeviceStoreBase.updateScreenSize',
     );
     try {
-      return super.updateScreenWidth(width);
+      return super.updateScreenSize(width, height);
     } finally {
       _$DeviceStoreBaseActionController.endAction(_$actionInfo);
     }
@@ -47,7 +65,8 @@ mixin _$DeviceStore on DeviceStoreBase, Store {
   @override
   String toString() {
     return '''
-screenWidth: ${screenWidth}
+screenWidth: ${screenWidth},
+screenHeight: ${screenHeight}
     ''';
   }
 }

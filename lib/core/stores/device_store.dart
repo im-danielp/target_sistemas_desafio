@@ -9,10 +9,17 @@ abstract class DeviceStoreBase with Store {
   @observable
   double screenWidth = 0.0;
 
+  @observable
+  double screenHeight = 0.0;
+
   @action
-  void updateScreenWidth(double width) {
+  void updateScreenSize(double width, double height) {
     if (screenWidth != width) {
       screenWidth = width;
+    }
+
+    if (screenHeight != height) {
+      screenHeight = height;
     }
   }
 }

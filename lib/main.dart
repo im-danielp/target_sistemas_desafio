@@ -22,7 +22,7 @@ class DesafioTarget extends StatelessWidget {
       theme: ThemeService.theme,
       home: LayoutBuilder(
         builder: (context, constraints) {
-          getIt<DeviceStore>().updateScreenWidth(constraints.maxWidth);
+          getIt<DeviceStore>().updateScreenSize(constraints.maxWidth, constraints.maxHeight);
           return LoginScreen();
         },
       ),

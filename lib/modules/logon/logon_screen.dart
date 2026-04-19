@@ -66,26 +66,31 @@ class _LogonScreenState extends State<LogonScreen> {
                 height: 140,
               ),
               RegisterField(
-                label: 'Nome',
+                label: '*Nome',
                 icon: Icons.badge_outlined,
                 isObscure: false,
                 controller: nameController,
                 textCapitalization: TextCapitalization.words,
               ),
               RegisterField(
-                label: 'Usuário',
+                label: '*Usuário',
                 icon: Icons.account_circle_outlined,
                 isObscure: false,
                 controller: userController,
               ),
               RegisterField(
-                label: 'Senha',
+                label: '*Senha',
                 icon: Icons.vpn_key_outlined,
                 isObscure: true,
                 controller: passController,
+                valiador: (value) {
+                  if (value!.isEmpty) return 'Preencha este campo';
+                  if (value.length <= 3) return 'Deve conter mais de 3 caracteres';
+                  return null;
+                },
               ),
               RegisterField(
-                label: 'Confirmar senha',
+                label: '*Confirmar senha',
                 icon: Icons.vpn_key_outlined,
                 isObscure: true,
                 controller: pass2Controller,

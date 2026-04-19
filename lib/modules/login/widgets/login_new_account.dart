@@ -22,15 +22,18 @@ class LoginNewAccount extends StatelessWidget {
       TextSpan(
         children: [
           TextSpan(
-            text: 'Ainda não tem uma conta?',
+            text: 'Ainda não tem uma conta? ',
             style: TextStyle(fontWeight: FontWeight.normal),
           ),
 
           TextSpan(
-            text: ' Cadastre-se',
+            text: 'Cadastre-se',
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: StyleConstants.primaryColor,
+              decoration: TextDecoration.underline,
+              decorationColor: StyleConstants.primaryColor,
+              decorationThickness: 2,
             ),
             recognizer: TapGestureRecognizer()..onTap = () => goToLogon(context),
           ),

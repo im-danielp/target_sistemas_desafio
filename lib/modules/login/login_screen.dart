@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:target/core/constants/assets_constants.dart';
+import 'package:target/core/constants/style_constants.dart';
 import 'package:target/core/widgets/register_field.dart';
 import 'package:target/modules/login/controllers/login_controller.dart';
 import 'package:target/modules/login/widgets/login_new_account.dart';
@@ -21,9 +22,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void handleLogin() {
     if (formKey.currentState!.validate()) {
+      ScaffoldMessenger.of(context).clearSnackBars();
       loginController.login(
         context,
-        userController.text,
+        userController.text.trim(),
         passController.text,
       );
     }
@@ -65,7 +67,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   isObscure: true,
                   controller: passController,
                 ),
-                Text('Esqueci minha senha', textAlign: TextAlign.right),
+                Text(
+                  'Esqueci minha senha',
+                  textAlign: TextAlign.right,
+                  style: TextStyle(
+                    color: StyleConstants.textLowOpacityColor,
+                    decorationColor: StyleConstants.textLowOpacityColor,
+                    decoration: TextDecoration.underline,
+                    decorationThickness: 2,
+                  ),
+                ),
                 Gap(15),
                 SizedBox(
                   height: 50,

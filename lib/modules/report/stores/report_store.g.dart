@@ -114,6 +114,18 @@ mixin _$ReportStore on ReportStoreBase, Store {
   }
 
   @override
+  void resetEditsCount() {
+    final _$actionInfo = _$ReportStoreBaseActionController.startAction(
+      name: 'ReportStoreBase.resetEditsCount',
+    );
+    try {
+      return super.resetEditsCount();
+    } finally {
+      _$ReportStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 linesCount: ${linesCount},

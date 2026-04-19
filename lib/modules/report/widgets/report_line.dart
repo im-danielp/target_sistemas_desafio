@@ -14,7 +14,8 @@ class ReportLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(12),
+      padding: EdgeInsets.symmetric(vertical: 14, horizontal: 12),
+      // padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
         border: Border.all(color: StyleConstants.outlineBorderColor),
         borderRadius: BorderRadius.circular(8),

@@ -21,11 +21,13 @@ class InfosController {
   }
 
   void handleEditInfo(InfoModel info, String newDescription) {
-    infoStore.editInfo(info.id, newDescription);
-
     final oldDescription = info.description;
-    reportStore.decrementLinesCount(oldDescription);
-    reportStore.incrementLinesCount(newDescription);
-    reportStore.incrementEditsCount();
+
+    if (newDescription != oldDescription) {
+      infoStore.editInfo(info.id, newDescription);
+      reportStore.decrementLinesCount(oldDescription);
+      reportStore.incrementLinesCount(newDescription);
+      reportStore.incrementEditsCount();
+    }
   }
 }

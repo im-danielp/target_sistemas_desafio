@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:gap/gap.dart';
 import 'package:target/core/constants/style_constants.dart';
+import 'package:target/core/services/locator_service.dart';
+import 'package:target/core/stores/device_store.dart';
 import 'package:target/modules/report/stores/report_store.dart';
 import 'package:target/modules/report/widgets/report_chart_caption.dart';
 
 class ReportChart extends StatelessWidget {
   final ReportStore reportStore;
 
-  const ReportChart({super.key, required this.reportStore});
+  ReportChart({super.key, required this.reportStore});
+
+  final deviceStore = getIt<DeviceStore>();
 
   @override
   Widget build(BuildContext context) {
+    final maxHeight = deviceStore.screenHeight;
+
     return Expanded(
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
@@ -20,13 +25,12 @@ class ReportChart extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         child: Column(
-          spacing: 15,
+          spacing: maxHeight * 0.08,
           mainAxisSize: MainAxisSize.min,
           children: [
             const Text('Comparativo entre caracteres'),
-            const Gap(32),
             SizedBox(
-              height: 200,
+              height: maxHeight * 0.23,
               child: PieChart(
                 PieChartData(
                   sectionsSpace: 0,
@@ -36,31 +40,30 @@ class ReportChart extends StatelessWidget {
                       color: StyleConstants.tertiaryColor,
                       value: reportStore.lettersPercentage,
                       title: '${reportStore.lettersPercentage.toInt()}%',
+                      borderSide: BorderSide(color: StyleConstants.outlineBorderColor),
                       radius: 100,
                       titleStyle: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
-                      borderSide: BorderSide(color: StyleConstants.outlineBorderColor),
                     ),
                     PieChartSectionData(
                       color: StyleConstants.quartaryColor,
                       value: reportStore.numbersPercentage,
                       title: '${reportStore.numbersPercentage.toInt()}%',
+                      borderSide: BorderSide(color: StyleConstants.outlineBorderColor),
                       radius: 100,
                       titleStyle: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
-                      borderSide: BorderSide(color: StyleConstants.outlineBorderColor),
                     ),
                   ],
                 ),
               ),
             ),
-            const SizedBox(height: 40),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
