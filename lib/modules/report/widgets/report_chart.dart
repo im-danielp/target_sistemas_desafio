@@ -19,18 +19,16 @@ class ReportChart extends StatelessWidget {
 
     return Expanded(
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+        padding: EdgeInsets.fromLTRB(16, 16, 16, maxHeight * 0.05),
         decoration: BoxDecoration(
           border: Border.all(color: StyleConstants.outlineBorderColor),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Column(
-          spacing: maxHeight * 0.08,
           mainAxisSize: MainAxisSize.min,
           children: [
             const Text('Comparativo entre caracteres'),
-            SizedBox(
-              height: maxHeight * 0.23,
+            Expanded(
               child: PieChart(
                 PieChartData(
                   sectionsSpace: 0,
@@ -41,7 +39,7 @@ class ReportChart extends StatelessWidget {
                       value: reportStore.lettersPercentage,
                       title: '${reportStore.lettersPercentage.toInt()}%',
                       borderSide: BorderSide(color: StyleConstants.outlineBorderColor),
-                      radius: 100,
+                      radius: maxHeight * 0.11,
                       titleStyle: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -53,7 +51,7 @@ class ReportChart extends StatelessWidget {
                       value: reportStore.numbersPercentage,
                       title: '${reportStore.numbersPercentage.toInt()}%',
                       borderSide: BorderSide(color: StyleConstants.outlineBorderColor),
-                      radius: 100,
+                      radius: maxHeight * 0.11,
                       titleStyle: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
