@@ -5,7 +5,7 @@ class CustomSnackbars {
   CustomSnackbars._();
 
   static SnackBar success({required String message}) {
-    KeysConstants.snackbarKey.currentState?.clearSnackBars();
+    KeysConstants.scaffolMainKey.currentState?.clearSnackBars();
 
     return SnackBar(
       content: Row(
@@ -25,7 +25,7 @@ class CustomSnackbars {
   }
 
   static SnackBar error({required String message}) {
-    KeysConstants.snackbarKey.currentState?.clearSnackBars();
+    KeysConstants.scaffolMainKey.currentState?.clearSnackBars();
 
     return SnackBar(
       content: Row(

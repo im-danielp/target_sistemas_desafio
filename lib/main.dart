@@ -18,7 +18,7 @@ class DesafioTarget extends StatelessWidget {
     return MaterialApp(
       title: 'Target Sistemas Desafio',
       debugShowCheckedModeBanner: false,
-      scaffoldMessengerKey: KeysConstants.snackbarKey,
+      scaffoldMessengerKey: KeysConstants.scaffolMainKey,
       theme: ThemeService.theme,
       home: LayoutBuilder(
         builder: (context, constraints) {

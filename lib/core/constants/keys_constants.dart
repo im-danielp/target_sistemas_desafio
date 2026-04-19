@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
-class KeysConstants {
-  static final GlobalKey<ScaffoldMessengerState> snackbarKey = GlobalKey<ScaffoldMessengerState>();
+abstract class KeysConstants {
+  static final scaffolMainKey = GlobalKey<ScaffoldMessengerState>();
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:target/core/constants/keys_constants.dart';
 import 'package:target/core/constants/style_constants.dart';
 import 'package:target/modules/logon/logon_screen.dart';
 
@@ -8,6 +9,7 @@ class LoginNewAccount extends StatelessWidget {
 
   void goToLogon(BuildContext context) {
     FocusManager.instance.primaryFocus?.unfocus();
+    KeysConstants.scaffolMainKey.currentState?.clearSnackBars();
     Navigator.push(
       context,
       MaterialPageRoute(
